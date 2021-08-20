@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/xdroid_miatoll.mk
+    $(LOCAL_DIR)/conquer_miatoll.mk
 
 COMMON_LUNCH_CHOICES := \
-    xdroid_miatoll-user \
-    xdroid_miatoll-userdebug \
-    xdroid_miatoll-eng
+    conquer_miatoll-user \
+    conquer_miatoll-userdebug \
+    conquer_miatoll-eng

@@ -13,17 +13,19 @@
 # limitations under the License.
 
 $(call inherit-product, device/xiaomi/miatoll/device.mk)
-$(call inherit-product, vendor/xdroid/config/common.mk)
+$(call inherit-product, vendor/conquer/config/common.mk)
 
 # Bootanimation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := xdroid_miatoll
+PRODUCT_NAME := conquer_miatoll
 PRODUCT_DEVICE := miatoll
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 9S
 PRODUCT_MANUFACTURER := Xiaomi
-XDROID_UI_BLUR := true
+
+CONQUER_BUILD_TYPE := OFFICIAL
+TARGET_USE_GAPPS := true
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 IS_PHONE := true
