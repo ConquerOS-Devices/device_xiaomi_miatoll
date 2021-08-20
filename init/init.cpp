@@ -27,6 +27,7 @@
 #include "vendor_init.h"
 
 using android::base::GetProperty;
+using std::string;
 
 std::vector<std::string> ro_props_default_source_order = {
     "",
@@ -37,6 +38,15 @@ std::vector<std::string> ro_props_default_source_order = {
     "system_ext.",
     "conquer.",
 };
+
+void property_override(string prop, string value)
+{
+    auto pi = (prop_info*) __system_property_find(prop.c_str());
+    if (pi != nullptr)
+        __system_property_update(pi, value.c_str(), value.size());
+    else
+        __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
+}
 
 void set_ro_build_prop(const std::string &source, const std::string &prop,
         const std::string &value, bool product = false) {
@@ -89,7 +99,13 @@ void load_device_properties() {
     }
 }
 
+void load_hardware_properties() {
+    string hwversion = GetProperty("ro.boot.hwversion", "");
+    property_override("ro.boot.hardware.revision", hwversion); 
+}
+
 void vendor_load_properties() {
     load_common_properties();
     load_device_properties();
+    load_hardware_properties();
 }
